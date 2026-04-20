@@ -45,7 +45,43 @@
         .icon { width: 60px; height: 60px; background: #4BB543; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; margin: 0 auto 20px; }
         .note { color: #ff6b00; font-size: 12.5px; font-style: italic; margin-bottom: 25px; }
         .ok-btn { background: #ff6b00; color: white; border: none; padding: 12px 0; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .table-layout {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.table-layout h3 {
+    color: #ff6b00;
+    margin-bottom: 10px;
+}
+
+.layout-wrapper {
+    width: 100%;
+    overflow-x: auto; /* horizontal scroll */
+    border-radius: 12px;
+    border: 1px solid #333;
+    background: #000;
+}
+
+.layout-wrapper img {
+    width: 100%;
+    max-width: 1000px; /* desktop size */
+    height: auto;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+    .reservation-card {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .layout-wrapper img {
+        width: 700px; /* force horizontal scroll */
+    }
+}
     </style>
+    
 </head>
 <body>
 
@@ -54,7 +90,14 @@
             <a href="index.html" class="back-btn">❮</a>
             <h2>Book a Table</h2>
         </div>
-
+<!-- Table Layout Section -->
+<div class="table-layout">
+    <h3>Table Layout</h3>
+    <div class="layout-wrapper">
+        <img src="table-plan.jpg" alt="Table Plan">
+    </div>
+    <p class="layout-note">Zoom to view seating arrangement</p>
+</div>
         <form id="resForm">
             <div class="input-group">
                 <label>Name</label>
