@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #111;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #000;
+}
+
+.logo {
+  color: orange;
+}
+
+.navbar a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px;
+}
+
+.section {
+  padding: 50px;
+  text-align: center;
+}
+
+.slider img {
+  width: 80%;
+  display: none;
+}
+
+.slider img.active {
+  display: block;
+}
+
+.ads img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.btn {
+  padding: 10px 20px;
+  background: orange;
+  color: black;
+  margin: 10px;
+  display: inline-block;
+}
+
+.gallery img {
+  width: 30%;
+  margin: 10px;
+}
+
+.table-text {
+  margin-top: 20px;
+}
