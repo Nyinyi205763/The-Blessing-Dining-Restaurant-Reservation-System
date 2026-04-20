@@ -1,28 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Reservation</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Table - The Blessing</title>
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #000; color: #fff;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
+        }
+        .reservation-card {
+            background: #111; padding: 30px; border-radius: 20px;
+            width: 90%; max-width: 400px; border: 1px solid #222;
+        }
+        .header { display: flex; align-items: center; margin-bottom: 25px; }
+        .back-btn { color: #ff6b00; text-decoration: none; font-size: 20px; padding-right: 15px; }
+        h2 { color: #ff6b00; margin: 0; font-size: 22px; flex-grow: 1; text-align: center; margin-right: 30px; }
+        .input-group { margin-bottom: 15px; }
+        .input-row { display: flex; gap: 15px; }
+        label { display: block; font-size: 13px; color: #888; margin-bottom: 5px; }
+        input, select, textarea {
+            width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #333;
+            border-radius: 8px; color: #fff; box-sizing: border-box; outline: none;
+        }
+        input:focus { border-color: #ff6b00; }
+        .submit-btn {
+            width: 100%; padding: 15px; background: #ff6b00; color: white;
+            border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
+        }
+        .submit-btn:disabled { background: #555; cursor: not-allowed; }
+        
+        /* Modal Style */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); z-index: 1000; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: #181818; padding: 40px; border-radius: 20px; text-align: center;
+            width: 80%; max-width: 300px; border: 1px solid #333;
+        }
+        .icon { width: 60px; height: 60px; background: #4BB543; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; margin: 0 auto 20px; }
+        .note { color: #ff6b00; font-size: 12.5px; font-style: italic; margin-bottom: 25px; }
+        .ok-btn { background: #ff6b00; color: white; border: none; padding: 12px 0; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    </style>
 </head>
 <body>
 
-<header class="navbar">
-  <h2>Reservation</h2>
-  <a href="index.html">Back</a>
-</header>
+    <div class="reservation-card">
+        <div class="header">
+            <a href="index.html" class="back-btn">❮</a>
+            <h2>Book a Table</h2>
+        </div>
 
-<section class="section">
-  <form id="form">
-    <input placeholder="Name">
-    <input placeholder="Phone">
-    <input placeholder="Date">
-    <input placeholder="Time">
-    <button type="submit">Submit</button>
-  </form>
+        <form id="resForm">
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="input-row">
+                <div class="input-group" style="flex: 1;">
+                    <label>Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="input-group" style="flex: 1;">
+                    <label>Time</label>
+                    <input type="time" id="time" required>
+                </div>
+            </div>
+            <div class="input-group">
+  <label>Pax (People)</label>
+  <input 
+    type="number" 
+    id="pax" 
+    placeholder="Enter number of people"
+    min="1"
+    required
+  >
+</div>
+            <div class="input-group">
+                <label>Special Request</label>
+                <textarea id="request" rows="2"></textarea>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Reserve Now</button>
+        </form>
+    </div>
 
-  <p id="msg"></p>
-</section>
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="icon">✓</div>
+            <h3>Success!</h3>
+            <p style="color: #bbb;">Successfully Booked</p>
+            <p class="note">အတည်ပြုနိုင်ရန်အတွက် ဖုန်းပြန်လည်ဆက်သွယ်ပေးပါမည်။</p>
+            <button class="ok-btn" onclick="closeAll()">OK</button>
+        </div>
+    </div>
 
-<script src="script.js"></script>
+  <script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbynibqv3Cob6JFZQSbcp0f2smwpmLR-dIEaVlPKrERK1CYPCTLaGk5f7_At7nd6HB21KQ/exec';
+
+const form = document.getElementById('resForm');
+const submitBtn = document.getElementById('submitBtn');
+const modal = document.getElementById('modal');
+const okBtn = document.getElementById('okBtn');
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Sending...";
+
+    const formData = {
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        pax: document.getElementById('pax').value,
+        request: document.getElementById('request').value
+    };
+
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: JSON.stringify(formData) 
+    })
+    .then(() => {
+        modal.style.display = 'flex';
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Reserve Now";
+        form.reset();
+    })
+    .catch(() => {
+        modal.style.display = 'flex';
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Reserve Now";
+        form.reset();
+    });
+});
+
+// ✅ OK button fix
+okBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+});
+function closeAll() {
+    document.getElementById("modal").style.display = "none";
+}
+</script>
 </body>
 </html>
+

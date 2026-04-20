@@ -1,46 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Amber Dining</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Blessing Dining Restaurant</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header class="header">
+    <div class="container nav">
+      <h1 class="logo">The Blessing</h1>
+      <nav>
+       <ul class="nav-links">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#ads">Offers</a></li>
+  <li><a href="#menu">Menu</a></li>
+  <li><a href="#top-sale">Top Sale</a></li>
+  <li><a href="reservation.html">Reserve Tables</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
+      </nav>
+    </div>
+  </header>
 
-<header class="navbar">
-  <h2 class="logo">Amber Dining</h2>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="table-plan.html">Table</a>
-    <a href="reservation.html">Reserve</a>
-  </nav>
-</header>
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="hero-subtitle">Dining Experience Like No Other</p>
+      <h2>The Blessing Dining Restaurant</h2>
+      <p class="hero-text">
+        Enjoy elegant dining, flavorful cuisine, refreshing drinks, and a warm
+        atmosphere designed for unforgettable moments.
+      </p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">View Menu</a>
+        <a href="reservation.html" class="btn btn-outline">Reserve Now</a>
+      </div>
+    </div>
+  </section>
 
-<section class="hero">
-  <h1>Luxury Dining Experience</h1>
-  <p>Modern dining with warm orange vibe</p>
-</section>
+  <section class="about-section" id="about">
+  <div class="container about-grid">
+    <div class="about-image">
+      <img src="about us.webp" alt="About The Blessing Dining Restaurant">
+    </div>
 
-<section class="section">
-  <h2>Top Sale Items</h2>
-
-  <div class="slider">
-    <img src="https://images.unsplash.com/photo-1544025162-d76694265947" class="active">
-    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b">
-    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9">
+    <div class="about-content">
+      <p class="section-tag">About Us</p>
+      <h2>Welcome to The Blessing Dining Restaurant</h2>
+      <p>
+        The Blessing Dining Restaurant offers a warm and elegant dining
+        experience where guests can enjoy delicious food, refreshing drinks,
+        and a relaxing atmosphere.
+      </p>
+      <p>
+        Located in the heart of Nay Pyi Taw, our restaurant is designed for
+        family dining, friendly gatherings, and memorable evenings with a
+        modern dining vibe.
+      </p>
+    </div>
   </div>
 </section>
 
-<section class="ads">
-  <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b">
+  <section class="ads-banner" id="ads">
+    <div class="container ads-content">
+      <div class="ads-text">
+        <span class="ads-label">Special Offer</span>
+        <h3>Weekend Dining Promotion</h3>
+        <p>
+          Reserve your table now and enjoy selected chef specials with signature drinks.
+        </p>
+      </div>
+      <div class="ads-image">
+        <img src="promotion bunner.jpg" alt="Dining Promotion">
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-title">
+        <p>Our Menu</p>
+        <h2>Food & Drinks</h2>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-card">
+          <div class="menu-image">
+            <img src="Food Menu Cover.jpg" alt="Food Menu">
+          </div>
+          <div class="menu-card-content">
+            <h3>Food Menu</h3>
+            <p>Click to view full food menu pages.</p>
+            <a href="food-menu.html" class="btn btn-primary small-btn">View Food Menu</a>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-image">
+            <img src="drink menu cover.jpg" alt="Drink Menu">
+          </div>
+          <div class="menu-card-content">
+            <h3>Drink Menu</h3>
+            <p>Click to view full drink menu pages.</p>
+            <a href="drink-menu.html" class="btn btn-primary small-btn">View Drink Menu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="top-sale" id="top-sale">
+  <div class="container">
+    <div class="section-title">
+      <p>Customer Favorites</p>
+      <h2>Top Sale Items</h2>
+    </div>
+
+    <div class="top-sale-grid">
+      <div class="sale-card">
+        <img src="Signature Steak.webp" alt="Top Sale 1">
+        <div class="sale-info">
+          <h3>Signature Steak</h3>
+          <p>Juicy grilled steak served with premium sides.</p>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <img src="Fresh Pasta.jpg" alt="Top Sale 2">
+        <div class="sale-info">
+          <h3>Seafood Pasta</h3>
+          <p>Rich creamy pasta with fresh seafood flavor.</p>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <img src="Chicken BBQ Pizza.jpg" alt="Top Sale 3">
+        <div class="sale-info">
+          <h3>Chicken BBQ Pizza</h3>
+          <p>Popular oven-baked pizza with premium toppings.</p>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <img src="Grilled Salmon.webp" alt="Top Sale 4">
+        <div class="sale-info">
+          <h3>Grilled Salmon</h3>
+          <p>Fresh salmon dish with elegant presentation.</p>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <img src="Signature Cocktail.webp" alt="Top Sale 5">
+        <div class="sale-info">
+          <h3>Signature Cocktail</h3>
+          <p>Refreshing cocktail crafted for dining nights.</p>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <img src="Fruit Mocktail.jpg" alt="Top Sale 6">
+        <div class="sale-info">
+          <h3>Fruit Mocktail</h3>
+          <p>Colorful and refreshing favorite drink selection.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-  <a href="menu.html" class="btn">Show Menu</a>
-  <a href="table-plan.html" class="btn">Show Table Plan</a>
-</section>
+  <section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-title">
+      <p>Contact Us</p>
+      <h2>Visit The Blessing</h2>
+    </div>
 
-<script src="script.js"></script>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Address</h3>
+        <p>
+          Nay Pyi Taw, Zabuthiri Ts, Thatpay Gone Ward, Ayarwaddy Road,
+          Ayarwaddy (2) Street, 360 Entertainment (6 Floors Building)
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Phone</h3>
+        <p>09 123 456 789</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Email</h3>
+        <p>theblessingrestaurant@gmail.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+  <footer class="footer">
+    <div class="container">
+      <h3>The Blessing Dining Restaurant</h3>
+      <p>Fine Dining • Food & Drinks • Warm Atmosphere</p>
+      <p class="footer-copy">© 2026 The Blessing Dining Restaurant. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
