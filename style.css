@@ -947,3 +947,19 @@ img {
     max-width: 92%;
   }
 }
+.input-row {
+    display: flex;
+    gap: 16px;
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+    .input-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
