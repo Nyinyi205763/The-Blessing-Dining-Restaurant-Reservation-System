@@ -28,8 +28,21 @@
         .header { display: flex; align-items: center; margin-bottom: 25px; }
         .back-btn { color: #ff6b00; text-decoration: none; font-size: 20px; padding-right: 15px; }
         h2 { color: #ff6b00; margin: 0; font-size: 22px; flex-grow: 1; text-align: center; margin-right: 30px; }
-        .input-group { margin-bottom: 15px; }
-        .input-row { display: flex; gap: 15px; }
+        .input-group { margin-bottom: 15px; }.input-row {
+    display: flex;
+    gap: 12px;
+}
+
+.input-row .input-group {
+    flex: 1;
+    min-width: 0;
+}
+        @media (max-width: 768px) {
+    .input-row {
+        flex-direction: column;
+        gap: 14px;
+    }
+}
         label { display: block; font-size: 13px; color: #888; margin-bottom: 5px; }
         input, select, textarea {
             width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #333;
