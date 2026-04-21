@@ -161,13 +161,10 @@ const form = document.getElementById('resForm');
 const submitBtn = document.getElementById('submitBtn');
 const modal = document.getElementById('modal');
 const okBtn = document.getElementById('okBtn');
-
 form.addEventListener('submit', e => {
     e.preventDefault();
-
     submitBtn.disabled = true;
     submitBtn.innerText = "Sending...";
-
     const formData = {
         name: document.getElementById('name').value,
         phone: document.getElementById('phone').value,
