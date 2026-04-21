@@ -150,51 +150,67 @@
             <h3>Success!</h3>
             <p style="color: #bbb;">Successfully Booked</p>
             <p class="note">အတည်ပြုနိုင်ရန်အတွက် ဖုန်းပြန်လည်ဆက်သွယ်ပေးပါမည်။</p>
-            <button class="ok-btn" onclick="closeAll()">OK</button>
+            <button class="ok-btn" id="okBtn" onclick="closeAll()">OK</button>
         </div>
     </div>
 
-  <script>
+<script>
 const scriptURL = 'https://script.google.com/macros/s/AKfycbynibqv3Cob6JFZQSbcp0f2smwpmLR-dIEaVlPKrERK1CYPCTLaGk5f7_At7nd6HB21KQ/exec';
 
 const form = document.getElementById('resForm');
 const submitBtn = document.getElementById('submitBtn');
 const modal = document.getElementById('modal');
 const okBtn = document.getElementById('okBtn');
-form.addEventListener('submit', e => {
+
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     submitBtn.disabled = true;
     submitBtn.innerText = "Sending...";
+
     const formData = {
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
         date: document.getElementById('date').value,
         time: document.getElementById('time').value,
         pax: document.getElementById('pax').value,
-        request: document.getElementById('request').value
+        request: document.getElementById('request').value.trim()
     };
 
-fetch(scriptURL, { 
-    method: 'POST', 
-    body: JSON.stringify(formData) 
-})
-.then(() => {
-    gtag('event', 'reservation_submit', {
-        event_category: 'Booking',
-        event_label: 'Reserve Table'
-    });
+    try {
+        const response = await fetch(scriptURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(formData)
+        });
 
-    modal.style.display = 'flex';
-    submitBtn.disabled = false;
-    submitBtn.innerText = "Reserve Now";
-    form.reset();
-})
-.catch(() => {
-    modal.style.display = 'flex';
-    submitBtn.disabled = false;
-    submitBtn.innerText = "Reserve Now";
-    form.reset();
+        const resultText = await response.text();
+        console.log("Server response:", resultText);
+
+        modal.style.display = 'flex';
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Reserve Now";
+        form.reset();
+
+    } catch (error) {
+        console.error("Submit error:", error);
+        alert("Sending failed. Please check Apps Script deploy and internet connection.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Reserve Now";
+    }
 });
+
+if (okBtn) {
+    okBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+}
+
+function closeAll() {
+    modal.style.display = "none";
+}
 </script>
 </body>
 </html>
